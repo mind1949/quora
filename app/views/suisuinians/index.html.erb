@@ -1,0 +1,54 @@
+<div class="col-md-12">
+  <div class= "btn btn-default pull-right">
+      <%= link_to("今日碎碎念",new_suisuinian_path , class:"btn btn-default pull-right" )%>
+  </div>
+
+  <!--<div class="modal fade" id="newsuisui-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
+    <div class="modal-dialog">
+      <div class="newsuisuimodal-container">
+        <h2>今日碎碎念</h2>
+        <hr>
+        <%= form_for @suisuinian do |f| %>
+
+        标题
+        <br>
+        <%= f.text_field :title %>
+        <br>
+        叙述
+        <br>
+        <%= f.text_area :description %>
+        <br>
+
+        <%= f.submit "Submit", :disable_with => 'Submiting...' %>
+        <% end %>
+
+
+
+      </div>
+    </div>
+  </div> -->
+
+  <table class="table table-hover">
+    <thead>
+      <tr>
+        <td>#</td>
+        <td>Title</td>
+        <td>Description</td>
+      </tr>
+    </thead>
+    <tbody>
+      <% @suisuinian.each do |suisuinian| %>
+        <tr>
+          <td>#</td>
+          <td><%= link_to(suisuinian.title, suisuinian_path(suisuinian)) %></td>
+          <td><%= suisuinian.description %></td>
+          <td>
+              <%= link_to("Edit", edit_suisuinian_path(suisuinian), class: "btn btn-sm btn-default")%>
+              <%= link_to("Delete", suisuinian_path(suisuinian),    class: "btn btn-sm btn-default",
+                          method: :delete, data: { confirm: "Are you sure?" } )%>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>

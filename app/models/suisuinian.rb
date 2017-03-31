@@ -1,0 +1,2 @@
+class Suisuinian < ApplicationRecord
+end
