@@ -1,32 +1,31 @@
 <div class="col-md-12">
   <div class= "btn btn-default pull-right">
-      <%= link_to("今日碎碎念",new_suisuinian_path , class:"btn btn-default pull-right" )%>
+<a  data-toggle="modal" data-target="#nsuisuinian-modal">今日碎碎念</a>
+  <!-- <%= link_to("今日碎碎念", new_suisuinian_path,calss:"btn btn-primary pull-right") %> -->
   </div>
 
-  <!--<div class="modal fade" id="newsuisui-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
-    <div class="modal-dialog">
-      <div class="newsuisuimodal-container">
-        <h2>今日碎碎念</h2>
-        <hr>
-        <%= form_for @suisuinian do |f| %>
-
-        标题
-        <br>
-        <%= f.text_field :title %>
-        <br>
-        叙述
-        <br>
-        <%= f.text_area :description %>
-        <br>
-
-        <%= f.submit "Submit", :disable_with => 'Submiting...' %>
-        <% end %>
-
-
-
+  <div class="modal fade" id="nsuisuinian-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
+    <div class="modal-dialog" role="document">
+      <div class="loginmodal-container">
+         <h2>新增碎碎念</h2>
+         <%= simple_form_for @nsuisuinian do |f| %>
+           <div class="form-inputs">
+             <%= f.input :title, input_html: { class: "form-control"} %>
+             <%= f.input :description, input_html: { class: "form-control"} %>
+           </div>
+           <div class="form-actions">
+             <%= f.button :submit, "提交" %>
+           </div>
+         <% end %>
       </div>
     </div>
-  </div> -->
+  </div>
+
+
+
+
+
+
 
   <table class="table table-hover">
     <thead>

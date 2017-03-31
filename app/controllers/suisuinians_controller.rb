@@ -2,6 +2,7 @@ class SuisuiniansController < ApplicationController
 
   def index
     @suisuinian = Suisuinian.all
+    @nsuisuinian= Suisuinian.new
   end
 
   def new
