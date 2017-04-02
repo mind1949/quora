@@ -3,6 +3,7 @@ class SuisuiniansController < ApplicationController
   def index
     @suisuinian = Suisuinian.all
     @nsuisuinian= Suisuinian.new
+  #  @editsuisuinian = Suisuinian.find(params[:id])
   end
 
   def new
@@ -17,7 +18,7 @@ class SuisuiniansController < ApplicationController
   end
 
   def edit
-    @suisuinian=Suisuinian.find(params[:id])
+#    @suisuinian=Suisuinian.find(params[:id])
   end
 
   def update

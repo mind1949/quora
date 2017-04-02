@@ -1,27 +1,8 @@
-<!--<div class="col-md-4 col-md-offset-4">
-    <h2>新增碎碎念</h2>
-
-    <hr>
-    <%= form_for @suisuinian do |f| %>
-
-    标题
-    <%= f.text_field :title %>
-    <br>
-    叙述
-    <br>
-    <%= f.text_area :description %>
-    <br>
-
-    <%= f.submit "Submit", :disable_with => 'Submiting...' %>
-    <% end %>
-
-</div>
--->
 <div class="modal fade" id="edit-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
   <div class="modal-dialog" role="document">
     <div class="loginmodal-container">
        <h2>编辑碎碎念</h2>
-       <%= simple_form_for @suisuinian do |f| %>
+       <%= simple_form_for @editsuisuinian do |f| %>
          <div class="form-inputs">
            <%= f.input :title, input_html: { class: "form-control"} %>
            <%= f.input :description, input_html: { class: "form-control"} %>

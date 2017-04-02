@@ -4,6 +4,67 @@
   <!-- <%= link_to("今日碎碎念", new_suisuinian_path,calss:"btn btn-primary pull-right") %> -->
   </div>
 
+
+
+
+
+
+
+  <table class="table table-hover">
+    <thead>
+      <tr>
+        <td>#</td>
+        <td>标   题</td>
+        <td>描   述</td>
+      </tr>
+    </thead>
+    <tbody>
+      <% @suisuinian.each do |suisuinian| %>
+        <tr>
+          <td>#</td>
+          <td><%= link_to(suisuinian.title, suisuinian_path(suisuinian)) %></td>
+          <td><%= suisuinian.description %></td>
+          <td>
+            <a  data-toggle="modal" data-target="#edit-modal"><%= content_tag(:span,"", :class=> "fa fa-pencil") %> </a>
+
+        <!--  <%= link_to(content_tag(:span, "", :class => "fa fa-pencil"), edit_suisuinian_path(suisuinian), class: "btn btn-sm btn-default")%> -->
+
+
+            <%= link_to(content_tag(:span, "", :class => "fa fa-trash-o"), suisuinian_path(suisuinian),    class: "btn btn-sm btn-default",
+                          method: :delete, data: { confirm: "Are you sure?" } )%>
+          </td>
+        </tr>
+
+        <div class="modal fade" id="edit-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
+          <div class="modal-dialog" role="document">
+            <div class="loginmodal-container">
+               <h2>编辑碎碎念</h2>
+               <%= simple_form_for suisuinian do |f| %>
+                 <div class="form-inputs">
+                   <%= f.input :title, input_html: { class: "form-control"} %>
+                   <%= f.input :description, input_html: { class: "form-control"} %>
+                 </div>
+                 <div class="form-actions">
+                   <%= link_to("取消",suisuinians_path) %>
+                   <%= f.button :submit, "更新" %>
+                 </div>
+               <% end %>
+         </div>
+          </div>
+        </div>
+
+
+      <% end %>
+    </tbody>
+  </table>
+
+
+
+
+
+
+
+
   <div class="modal fade" id="nsuisuinian-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
     <div class="modal-dialog" role="document">
       <div class="loginmodal-container">
@@ -14,6 +75,7 @@
              <%= f.input :description, input_html: { class: "form-control"} %>
            </div>
            <div class="form-actions">
+             <%= link_to("取消",suisuinians_path) %>
              <%= f.button :submit, "提交" %>
            </div>
          <% end %>
@@ -25,29 +87,4 @@
 
 
 
-
-
-  <table class="table table-hover">
-    <thead>
-      <tr>
-        <td>#</td>
-        <td>Title</td>
-        <td>Description</td>
-      </tr>
-    </thead>
-    <tbody>
-      <% @suisuinian.each do |suisuinian| %>
-        <tr>
-          <td>#</td>
-          <td><%= link_to(suisuinian.title, suisuinian_path(suisuinian)) %></td>
-          <td><%= suisuinian.description %></td>
-          <td>
-              <%= link_to("Edit", edit_suisuinian_path(suisuinian), class: "btn btn-sm btn-default")%>
-              <%= link_to("Delete", suisuinian_path(suisuinian),    class: "btn btn-sm btn-default",
-                          method: :delete, data: { confirm: "Are you sure?" } )%>
-          </td>
-        </tr>
-      <% end %>
-    </tbody>
-  </table>
 </div>
